@@ -61,5 +61,30 @@ describe('Thermostat', function() {
     });
   });
 
+  describe('showCurrentEnergyUsage', function() {
+    it('shows low if temp is < 18', function() {
+      for (let i = 0; i < 5; i++) {
+        thermostat.down();
+      };
+      expect(thermostat.showCurrentEnergyUsage()).toEqual("low");
+    });
+    it('shows medium if 18 <= temp <= 25', function() {
+      for (let i = 0; i < 2; i++) {
+        thermostat.down();
+      };
+      expect(thermostat.showCurrentEnergyUsage()).toEqual("medium");
+      for (let i = 0; i < 7; i++) {
+        thermostat.up();
+      };
+      expect(thermostat.showCurrentEnergyUsage()).toEqual("medium");
+    });
+    it('shows high if temp is > 25', function() {
+      for (let i = 0; i < 6; i++) {
+        thermostat.up();
+      };
+      expect(thermostat.showCurrentEnergyUsage()).toEqual("high");
+    });
+  });
+
 
 });

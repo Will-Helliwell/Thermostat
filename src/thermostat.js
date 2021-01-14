@@ -51,4 +51,14 @@ class Thermostat {
     this.temperature = this.DEFAULT_TEMPERATURE;
   };
 
+  showCurrentEnergyUsage() {
+    if (this.getCurrentTemperature() < 18) {
+      return "low";
+    } else if (this.getCurrentTemperature() <= 25) {
+      return "medium";
+    } else {
+      return "high";
+    };
+  };
+
 };
