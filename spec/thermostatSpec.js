@@ -46,7 +46,10 @@ describe('Thermostat', function() {
     it('turns off power saving', function() {
       thermostat.turnOnPowerSaving();
       thermostat.turnOffPowerSaving();
-      expect(thermostat.currentMaximumTemperature).toEqual(thermostat.MAXIMUM_TEMPERATURE_PSM_OFF);
+      for (let i = 0; i < 13; i++) {
+        thermostat.up()
+      };
+      expect(thermostat.getCurrentTemperature()).toEqual(32);
     });
   });
 
