@@ -7,7 +7,6 @@ class Thermostat {
     this.MAXIMUM_TEMPERATURE_PSM_OFF = 32;
     this.MAXIMUM_TEMPERATURE_PSM_ON = 25;
     this.currentMaximumTemperature = this.MAXIMUM_TEMPERATURE_PSM_OFF;
-    // this.isPowerSavingOn = false;
   };
 
   getCurrentTemperature() {
@@ -39,8 +38,11 @@ class Thermostat {
   };
 
   turnOnPowerSaving() {
-    // this.isPowerSavingOn = true;
     this.currentMaximumTemperature = this.MAXIMUM_TEMPERATURE_PSM_ON;
+  };
+
+  turnOffPowerSaving() {
+    this.currentMaximumTemperature = this.MAXIMUM_TEMPERATURE_PSM_OFF;
   };
 
 };

@@ -37,9 +37,16 @@ describe('Thermostat', function() {
     it('throws an error when temperature reaches 10', function (){
       for (let i = 0; i < 11; i++) {
         thermostat.down();
-        // console.log(thermostat.getCurrentTemperature());
       };
       expect(thermostat.getCurrentTemperature()).toEqual(10);
+    });
+  });
+
+  describe('turnOffPowerSaving', function() {
+    it('turns off power saving', function() {
+      thermostat.turnOnPowerSaving();
+      thermostat.turnOffPowerSaving();
+      expect(thermostat.currentMaximumTemperature).toEqual(thermostat.MAXIMUM_TEMPERATURE_PSM_OFF);
     });
   });
 
