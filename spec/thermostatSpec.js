@@ -47,9 +47,17 @@ describe('Thermostat', function() {
       thermostat.turnOnPowerSaving();
       thermostat.turnOffPowerSaving();
       for (let i = 0; i < 13; i++) {
-        thermostat.up()
+        thermostat.up();
       };
       expect(thermostat.getCurrentTemperature()).toEqual(32);
+    });
+  });
+
+  describe('resetTemperature', function() {
+    it('resets the current temperature to DEFAULT_TEMPERATURE', function() {
+      thermostat.up();
+      thermostat.resetTemperature();
+      expect(thermostat.getCurrentTemperature()).toEqual(thermostat.DEFAULT_TEMPERATURE);
     });
   });
 
