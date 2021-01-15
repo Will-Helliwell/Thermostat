@@ -1,0 +1,35 @@
+<!--
+  - Display:
+    - current temp: (p)
+    - current energy usage: low/med/high
+    - power-saving mode: ON/OFF (p)
+
+ - Control:
+    - temp up (button)
+    - temp down (button)
+    - reset temp (button)
+    - PSM on (button)
+    - PSM off (button)
+
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thermostat</title>
+  </head>
+  <body>
+    <section>
+      <h1 id="temperature">Current Temp: X</h1>
+      <p>
+        <button id="temperature-up">+</button>
+        <button id="temperature-down">-</button>
+        <button id="temperature-reset">reset</button>
+        power saving mode is: <span id="power-saving-status">on</span>
+        <button id="powersaving-on">PSM on</button>
+        <button id="powersaving-off">PSM off</button>
+      </p>
+    </section>
+    <script src="src/thermostat.js"></script>
+  </body>
+</html>
