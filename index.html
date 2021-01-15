@@ -16,18 +16,83 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Thermostat</title>
+    <link rel="stylesheet" href="./public/css/energy_usage_colour.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      button.test {
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
+
+    <script>
+      // alert("Welcome");
+      $( document ).ready(function() {
+
+        var thermostat = new Thermostat();
+
+        function update_current_temp_view() {
+          $('#temperature').text("Current Temperature: " + thermostat.getCurrentTemperature() + "°C");
+          $('#temperature').attr('class', thermostat.showCurrentEnergyUsage());
+        };
+
+        update_current_temp_view();
+
+        $('#temperature-up').click(function() {
+          thermostat.up();
+          update_current_temp_view();
+        });
+
+        $('#temperature-down').click( function() {
+          thermostat.down();
+          update_current_temp_view();
+        });
+
+        $('#temperature-reset').click( function() {
+          thermostat.resetTemperature();
+          update_current_temp_view();
+        });
+
+        $('#powersaving-on').click( function() {
+          thermostat.turnOnPowerSaving();
+          $('#power-saving-status').text("on");
+        });
+
+        $('#powersaving-off').click( function() {
+          thermostat.turnOffPowerSaving();
+          $('#power-saving-status').text("off");
+        });
+
+        $( "#mysterious" ).click(function() {
+          alert( "Fly you fools!" );
+          event.preventDefault();
+          $( this ).hide( "slow" );
+        });
+
+        $( "button" ).addClass( "test" );
+
+
+
+      });
+    </script>
+
     <section>
-      <h1 id="temperature">Current Temp: X</h1>
+      <h1 id="temperature"></h1>
       <p>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
         <button id="temperature-reset">reset</button>
-        power saving mode is: <span id="power-saving-status">on</span>
+        power saving mode is: <span id="power-saving-status">off</span>
         <button id="powersaving-on">PSM on</button>
         <button id="powersaving-off">PSM off</button>
+      </p>
+    </section>
+    <section>
+      <p>
+        <button id="mysterious">Gandalf</button>
       </p>
     </section>
     <script src="src/thermostat.js"></script>
